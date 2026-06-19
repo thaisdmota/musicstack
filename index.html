@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MusicStack</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Raleway:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="phone-frame">
+      <header class="topbar">
+        <button class="icon-button" type="button" aria-label="Voltar">
+          <img class="nav-icon" src="assets/Icon-compras.png" alt="" />
+        </button>
+        <div class="brand">Musicstack</div>
+        <button class="icon-button" type="button" aria-label="Menu">
+          <img class="nav-icon" src="assets/Icon.png" alt="" />
+        </button>
+      </header>
+
+      <section class="main-content">
+        <section class="cart-column">
+          <div class="section-heading">
+            <h1>CARRINHO</h1>
+            <span>3 ITENS</span>
+          </div>
+
+          <div class="cart-list">
+            <article class="cart-item">
+              <div class="cover-wrap">
+                <img class="cover" src="assets/vinyl-1-animation.png" alt="Icarus Falls" />
+              </div>
+              <div class="item-copy">
+                <div class="item-title-row">
+                  <div>
+                    <h2>Icarus Falls</h2>
+                    <p>ZAYN</p>
+                  </div>
+                  <span class="tag tag-blue">MAIS VENDIDOS</span>
+                </div>
+                <div class="item-actions">
+                  <button class="qty-button" type="button" aria-label="Diminuir quantidade">
+                    <span></span>
+                  </button>
+                  <span class="qty-number">1</span>
+                  <button class="qty-button qty-button--plus" type="button" aria-label="Aumentar quantidade">
+                    <span></span>
+                  </button>
+                  <strong>R$ 345,00</strong>
+                </div>
+              </div>
+            </article>
+
+            <article class="cart-item">
+              <div class="cover-wrap">
+                <img class="cover" src="assets/vinyl-2-bg.png" alt="you seem pretty sad for a girl so in love" />
+              </div>
+              <div class="item-copy">
+                <div class="item-title-row">
+                  <div>
+                    <h2>you seem pretty sad for a girl so in love</h2>
+                    <p>Olivia Rodrigo</p>
+                  </div>
+                  <span class="tag tag-blue">PRÉ-VENDA</span>
+                </div>
+                <div class="item-actions">
+                  <button class="qty-button" type="button" aria-label="Diminuir quantidade">
+                    <span></span>
+                  </button>
+                  <span class="qty-number">1</span>
+                  <button class="qty-button qty-button--plus" type="button" aria-label="Aumentar quantidade">
+                    <span></span>
+                  </button>
+                  <strong>R$ 350,00</strong>
+                </div>
+              </div>
+            </article>
+
+            <article class="cart-item">
+              <div class="cover-wrap">
+                <img class="cover" src="assets/vinyl-3-bg.png" alt="Dreams" />
+              </div>
+              <div class="item-copy">
+                <div class="item-title-row">
+                  <div>
+                    <h2>Dreams</h2>
+                    <p>Fleetwood Mac</p>
+                  </div>
+                  <span class="tag tag-blue">CLÁSSICO</span>
+                </div>
+                <div class="item-actions">
+                  <button class="qty-button" type="button" aria-label="Diminuir quantidade">
+                    <span></span>
+                  </button>
+                  <span class="qty-number">1</span>
+                  <button class="qty-button qty-button--plus" type="button" aria-label="Aumentar quantidade">
+                    <span></span>
+                  </button>
+                  <strong>R$ 420,00</strong>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <aside class="summary-card">
+          <h3>RESUMO</h3>
+          <div class="summary-lines">
+            <div class="summary-line">
+              <span>Subtotal</span>
+              <strong>R$ 1.050,00</strong>
+            </div>
+            <div class="summary-line">
+              <span>Frete</span>
+              <strong>R$ 25,00</strong>
+            </div>
+            <div class="summary-divider"></div>
+            <div class="summary-line summary-line--total">
+              <span>TOTAL</span>
+              <strong>R$ 1.075,00</strong>
+            </div>
+          </div>
+
+          <div class="coupon-box">
+            <label for="coupon">CUPOM DE DESCONTO</label>
+            <div class="coupon-row">
+              <input id="coupon" type="text" placeholder="CÓDIGO" />
+              <button type="button">APLICAR</button>
+            </div>
+          </div>
+
+          <button class="checkout-button" type="button">
+            <img class="checkout-icon" src="assets/checkout-icon.png" alt="" />
+            IR PARA CHECKOUT
+          </button>
+          <p class="security-note">
+            <img class="security-icon" src="assets/secure-icon.png" alt="" />
+            PAGAMENTO 100% SEGURO
+          </p>
+        </aside>
+      </section>
+    </main>
+<script src="script.js"></script>
+  </body>
+</html>

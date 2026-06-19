@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resumo do Pedido</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Raleway:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  
+  <body>
+    <main class="order-screen">
+<header class="top-app-bar">
+  <button class="nav-button back-button" type="button" aria-label="Voltar">
+    <img src="assets/Icon-compras.png" alt="Voltar" style="width:18px;height:18px;" />
+  </button>
+  <button class="nav-button cart-button" type="button" aria-label="Carrinho">
+    <img src="assets/Icon.png" alt="Carrinho" style="width:18px;height:18px;" />
+    <span class="cart-badge">2</span>
+  </button>
+</header>
+
+      <section class="success-overlay" aria-hidden="true"></section>
+
+      <section class="order-content">
+        <section class="order-header">
+          <h1>RESUMO DO PEDIDO</h1>
+          <p>PEDIDO #8291</p>
+        </section>
+
+        <section class="content-grid">
+          <div class="left-column">
+            <section class="panel items-panel">
+              <h2>ITENS DO CARRINHO (2)</h2>
+              <div class="items-list">
+              <article class="item-row">
+                <div class="item-cover">
+                  <img src="assets/vinyl-3-bg.png" alt="Dreams" style="width:100%;height:100%;object-fit:cover;" />
+                </div>
+                <div class="item-meta">
+                  <div>
+                    <h3>Dreams</h3>
+                    <p>FLEETWOOD MAC • 1977</p>
+                  </div>
+                  <span>QUANTIDADE: 1</span>
+                  <strong>R$ 345,00</strong>
+                </div>
+              </article>
+              <div class="divider"></div>
+              <article class="item-row">
+                <div class="item-cover item-cover--second">
+                  <img src="assets/madeintheam.png" alt="Made in the A.M." style="width:100%;height:100%;object-fit:cover;" />
+                </div>
+                <div class="item-meta">
+                  <div>
+                    <h3>Made in the A.M.</h3>
+                    <p>One Direction • 2015</p>
+                  </div>
+                  <span>QUANTIDADE: 1</span>
+                  <strong>R$ 289,00</strong>
+                </div>
+              </article>
+            </div>
+            </section>
+
+            <section class="panel info-stack">
+              <div class="info-card payment-card">
+                <div class="info-card__header">
+                  <h2>PAGAMENTO</h2>
+                  <button type="button">EDITAR</button>
+                </div>
+                <div class="payment-card__body">
+                  <div class="payment-icon">
+                    <img src="assets/mastercard.png" alt="Mastercard" style="width:40px;height:26px;object-fit:contain;" />
+                  </div>
+                  <div>
+                    <p class="payment-name">Mastercard Final 4482</p>
+                    <p class="payment-meta">EXPIRA EM 12/28</p>
+                  </div>
+                </div>
+                <div class="payment-security">
+                  <span class="payment-security__icon"></span>
+                  <span>PAGAMENTO CRIPTOGRAFADO</span>
+                </div>
+              </div>
+
+              <div class="info-card shipping-card">
+                <div class="info-card__header">
+                  <h2>ENDEREÇO DE ENTREGA</h2>
+                  <button type="button">EDITAR</button>
+                </div>
+                <div class="shipping-card__body">
+                  <p>SQS 202, Bloco C, Apt 10</p>
+                  <p>Asa Sul, Brasília - DF</p>
+                  <p>CEP: 70293-030</p>
+                  <div class="shipping-delivery">
+                    <span class="shipping-delivery__icon"></span>
+                    <span>ENTREGA EXPRESSA (2-3 DIAS ÚTEIS)</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <aside class="panel summary-panel">
+            <div class="summary-panel__header">
+              <h2>RESUMO FINANCEIRO</h2>
+            </div>
+            <div class="summary-lines">
+              <div class="summary-row">
+                <span>Subtotal (2 itens)</span>
+                <strong>R$ 634,00</strong>
+              </div>
+              <div class="summary-row">
+                <span>Frete</span>
+                <strong>R$ 22,00</strong>
+              </div>
+              <div class="summary-row summary-row--discount">
+                <span>Desconto "VIPGOLD"</span>
+                <strong>- R$ 56,00</strong>
+              </div>
+              <div class="summary-divider"></div>
+              <div class="summary-total">
+                <span>TOTAL</span>
+                <strong>R$ 600,00</strong>
+              </div>
+            </div>
+            <button class="checkout-button" type="button">
+              FINALIZAR COMPRA
+              <span></span>
+            </button>
+            <p class="terms-text">
+              AO FINALIZAR, VOCÊ CONCORDA COM OS
+              <a href="#">TERMOS DE CURADORIA E SERVIÇO</a>.
+            </p>
+          </aside>
+        </section>
+      </section>
+    </main>
+<script src="script.js"></script>
+  </body>
+</html>

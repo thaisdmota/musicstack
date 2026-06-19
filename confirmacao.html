@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pedido Confirmado</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Raleway:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="confirmation-screen">
+<header class="top-app-bar confirmation-topbar">
+  <button class="nav-button back-button" type="button" aria-label="Voltar">
+    <img src="assets/Icon-compras.png" alt="Voltar" style="width:18px;height:18px;" />
+  </button>
+  <div class="brand-label">musicstack</div>
+  <button class="nav-button cart-button" type="button" aria-label="Carrinho">
+    <img src="assets/Icon.png" alt="Carrinho" style="width:18px;height:18px;" />
+  </button>
+</header>
+
+      <section class="confirmation-content">
+        <section class="confirmation-hero">
+          <div class="confirmation-hero__decor"></div>
+          <div class="confirmation-hero__icon">
+            <span class="confirmation-hero__icon-inner"></span>
+          </div>
+          <h1>Obrigado por comprar<br />conosco!</h1>
+        </section>
+
+        <section class="confirmation-summary-card">
+          <div class="confirmation-summary-card__header">
+            <h2>RESUMO DA COMPRA</h2>
+          </div>
+
+          <div class="confirmation-product-row">
+          <div class="confirmation-product-row__image">
+            <img src="assets/vinyl-1-animation.png" alt="Icarus Falls" style="width:100%;height:100%;object-fit:cover;" />
+          </div>
+            <div class="confirmation-product-row__copy">
+              <h3>Icarus Falls</h3>
+              <p>Limited Gold Edition</p>
+              <strong>R$ 345</strong>
+            </div>
+          </div>
+
+          <div class="confirmation-summary-card__divider"></div>
+
+          <div class="confirmation-total-row">
+            <div>
+              <span>TOTAL PAGO</span>
+              <strong>R$ 345,00</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="confirmation-eta-card">
+          <div class="confirmation-eta-card__header">
+            <h2>PREVISÃO DE ENTREGA</h2>
+          </div>
+          <div class="confirmation-eta-card__date">
+            <strong>12</strong>
+            <span>SETEMBRO</span>
+          </div>
+          <p>
+            Seu pedido está sendo preparado para o ritual de embalagem.<br />
+            Enviaremos o código de rastreio em breve.
+          </p>
+          <div class="confirmation-eta-card__badge"></div>
+        </section>
+
+        <section class="confirmation-address-card">
+          <div class="confirmation-address-card__header">
+            <h2>DESTINO DO ENVIO</h2>
+          </div>
+          <div class="confirmation-address-card__body">
+            <div class="confirmation-address-card__icon"></div>
+            <div>
+              <h3>Minha Casa</h3>
+              <p>SQS 202, Bloco C, Apt 10</p>
+              <p>Asa Sul, Brasília - DF</p>
+              <p>CEP: 70293-030</p>
+            </div>
+          </div>
+        </section>
+
+        <a class="confirmation-cta" href="#">PÁGINA INICIAL</a>
+      </section>
+    </main>
+<script src="script.js"></script>
+  </body>
+</html>

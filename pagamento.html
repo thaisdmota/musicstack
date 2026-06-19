@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pagamento</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Raleway:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="payment-screen">
+      <footer class="footer-action">
+        <div class="footer-action__inner">
+          <button class="footer-action__button footer-action__button--back" type="button">
+            <span class="footer-action__icon"></span>
+            <span>VOLTAR</span>
+          </button>
+          <button class="footer-action__button footer-action__button--next" type="button">
+            <span>AVANÇAR</span>
+          </button>
+        </div>
+      </footer>
+
+<header class="top-app-bar payment-topbar">
+  <button class="nav-button back-button" type="button" aria-label="Voltar">
+    <img src="assets/Icon-compras.png" alt="Voltar" style="width:18px;height:18px;" />
+  </button>
+  <div class="brand-label">Musicstack</div>
+  <button class="nav-button cart-button" type="button" aria-label="Carrinho">
+    <img src="assets/Icon.png" alt="Carrinho" style="width:18px;height:18px;" />
+  </button>
+</header>
+
+      <section class="payment-content">
+        <div class="progress-indicator" aria-label="Progresso do checkout">
+          <span class="progress-dot progress-dot--active"></span>
+          <span class="progress-dot progress-dot--active"></span>
+          <span class="progress-dot"></span>
+        </div>
+
+        <section class="payment-layout">
+          <div class="payment-form-column">
+            <section class="payment-section">
+              <h1>Pagamento</h1>
+              <div class="payment-methods">
+                <button class="payment-method payment-method--active" type="button">
+                  <span class="payment-method__icon"></span>
+                  <span>CARTÃO DE CRÉDITO</span>
+                </button>
+                <button class="payment-method" type="button">
+                  <span class="payment-method__icon"></span>
+                  <span>BOLETO</span>
+                </button>
+                <button class="payment-method" type="button">
+                  <span class="payment-method__icon"></span>
+                  <span>PIX</span>
+                </button>
+              </div>
+
+              <form class="card-form">
+                <div class="field-block">
+                  <label>NÚMERO DO CARTÃO</label>
+                  <div class="input-line">
+                    <span>0000 0000 0000 0000</span>
+                  </div>
+                </div>
+
+                <div class="field-block">
+                  <label>NOME IMPRESSO NO CARTÃO</label>
+                  <div class="input-line">
+                    <span>NOME COMO NO CARTÃO</span>
+                  </div>
+                </div>
+
+                <div class="field-grid">
+                  <div class="field-block">
+                    <label>VALIDADE</label>
+                    <div class="input-line">
+                      <span>MM/AA</span>
+                    </div>
+                  </div>
+                  <div class="field-block">
+                    <label>CVV</label>
+                    <div class="input-line">
+                      <span>***</span>
+                    </div>
+                  </div>
+                  <div class="field-block field-block--cpf">
+                    <label>CPF TITULAR</label>
+                    <div class="input-line">
+                      <span>000.000.000-00</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="installments-block">
+                  <label>PARCELAMENTO</label>
+                  <div class="installments-selector">
+                    <span class="installments-selector__text">1x de R$ 345,90 sem juros</span>
+                  </div>
+                </div>
+              </form>
+            </section>
+          </div>
+
+          <aside class="summary-card payment-summary">
+            <div class="summary-card__header">
+              <h2>Resumo do Pedido</h2>
+            </div>
+            <div class="summary-card__rows">
+              <div class="summary-row">
+                <span>SUBTOTAL (2 ITENS)</span>
+                <strong>R$ 310,00</strong>
+              </div>
+              <div class="summary-row">
+                <span>FRETE</span>
+                <strong>R$ 35,90</strong>
+              </div>
+              <div class="summary-row summary-row--total">
+                <span>TOTAL</span>
+                <strong>R$ 345,90</strong>
+              </div>
+            </div>
+            <div class="product-preview">
+              <div class="product-preview__image"></div>
+              <div class="product-preview__copy">
+                <h3>Rumours - Fleetwood Mac</h3>
+                <p>REEDIÇÃO 2023 / 180G</p>
+              </div>
+            </div>
+          </aside>
+        </section>
+      </section>
+    </main>
+    
+<script src="script.js"></script>
+  </body>
+</html>

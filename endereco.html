@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Endereço de Envio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Raleway:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="address-screen">
+<header class="top-app-bar address-topbar">
+  <button class="nav-button back-button" type="button" aria-label="Voltar">
+    <img src="assets/Icon-compras.png" alt="Voltar" style="width:18px;height:18px;" />
+  </button>
+  <div class="brand-label">Musicstack</div>
+  <button class="nav-button cart-button" type="button" aria-label="Carrinho">
+    <img src="assets/Icon.png" alt="Carrinho" style="width:18px;height:18px;" />
+  </button>
+</header>
+
+      <section class="address-content">
+        <h1 class="address-title">ENDEREÇO DE ENVIO</h1>
+
+        <section class="address-layout">
+          <div class="address-form-column">
+            <form class="address-form">
+              <div class="form-grid form-grid--two">
+                <div class="field-group">
+                  <label for="cep">CEP</label>
+                  <div class="input-field">00000-000</div>
+                </div>
+                <div class="field-group">
+                  <label for="nome">NOME COMPLETO</label>
+                  <div class="input-field">EX: GABRIEL JÚNIOR</div>
+                </div>
+              </div>
+
+              <div class="field-group field-group--stack">
+                <label for="logradouro">ENDEREÇO / LOGRADOURO</label>
+                <div class="input-field">DF-425</div>
+              </div>
+
+              <div class="form-grid form-grid--two">
+                <div class="field-group">
+                  <label for="numero">NÚMERO</label>
+                  <div class="input-field">123</div>
+                </div>
+                <div class="field-group">
+                  <label for="complemento">COMPLEMENTO</label>
+                  <div class="input-field">APTO, BLOCO, ETC.</div>
+                </div>
+              </div>
+            </form>
+
+            <section class="shipping-methods">
+              <h2>MÉTODO DE ENTREGA</h2>
+              <div class="shipping-options">
+                <article class="shipping-option shipping-option--active">
+                  <div class="shipping-option__row">
+                    <span>SEDEX</span>
+                    <strong>R$ 42,00</strong>
+                  </div>
+                  <p>2-3 DIAS ÚTEIS. SEGURO TOTAL INCLUSO.</p>
+                </article>
+                <article class="shipping-option">
+                  <div class="shipping-option__row">
+                    <span>PAC</span>
+                    <strong>R$ 18,50</strong>
+                  </div>
+                  <p>7-10 DIAS ÚTEIS. ENTREGA PADRÃO.</p>
+                </article>
+                <article class="shipping-option">
+                  <div class="shipping-option__row">
+                    <span>RETIRADA</span>
+                    <strong>GRÁTIS</strong>
+                  </div>
+                  <p>LOJA FÍSICA - Brasília, asa norte.</p>
+                </article>
+              </div>
+            </section>
+          </div>
+
+          <aside class="summary-preview">
+            <div class="summary-preview__panel">
+              <div class="summary-preview__header">
+                <h3>RESUMO DA COLEÇÃO</h3>
+              </div>
+              
+              <div class="summary-preview__product">
+                <div class="product-cover">
+                  <img src="assets/pinkfloyd.png" alt="Pink Floyd - Dark Side of the Moon" style="width:100%;height:100%;object-fit:cover;" />
+                </div>
+                <div class="product-copy">
+                  <h4>PINK FLOYD - THE DARK SIDE OF THE MOON</h4>
+                  <p>edição limitada</p>
+                  <strong>R$ 380,00</strong>
+                </div>
+              </div>
+
+              <div class="summary-preview__totals">
+                <div class="summary-line">
+                  <span>SUBTOTAL</span>
+                  <strong>R$ 380,00</strong>
+                </div>
+                <div class="summary-line">
+                  <span>ENVIO</span>
+                  <strong class="summary-line--accent">R$ 42,00</strong>
+                </div>
+                <div class="summary-line summary-line--total">
+                  <span>TOTAL</span>
+                  <strong>R$ 422,00</strong>
+                </div>
+              </div>
+
+              <a class="checkout-link" href="#">IR PARA PAGAMENTO</a>
+            </div>
+          </aside>
+        </section>
+      </section>
+    </main>
+<script src="script.js"></script>
+  </body>
+</html>
