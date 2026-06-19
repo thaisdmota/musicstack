@@ -147,5 +147,14 @@
       </section>
     </main>
 <script src="script.js"></script>
+<script>
+    // Fallback: se o script não carregou, tenta carregar de novo
+    if (typeof initCarrinho === 'undefined') {
+        console.log('Carregando script.js novamente...');
+        var script = document.createElement('script');
+        script.src = 'script.js';
+        document.head.appendChild(script);
+    }
+</script>
   </body>
 </html>
