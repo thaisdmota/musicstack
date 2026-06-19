@@ -169,32 +169,14 @@ function updateSubtotal() {
     const totalElement = document.querySelector('.summary-line--total strong');
     const itemCount = document.querySelector('.section-heading span');
     
-    // Atualizar número de itens
+    // Atualizar número de itens (soma total de unidades)
     if (itemCount) {
-        const totalItems = document.querySelectorAll('.qty-number').length;
+        let totalItems = 0;
+        document.querySelectorAll('.qty-number').forEach(el => {
+            totalItems += parseInt(el.textContent);
+        });
         itemCount.textContent = `${totalItems} ITENS`;
     }
-    
-    if (subtotalElement) {
-        subtotalElement.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
-    }
-    
-    if (totalElement) {
-        const shipping = 25.00;
-        const totalWithShipping = total + shipping;
-        totalElement.textContent = `R$ ${totalWithShipping.toFixed(2).replace('.', ',')}`;
-    }
-}
-function updateSubtotal() {
-    const prices = document.querySelectorAll('.item-actions strong');
-    let total = 0;
-    prices.forEach(price => {
-        const value = parseFloat(price.textContent.replace('R$ ', '').replace(',', '.'));
-        total += value;
-    });
-    
-    const subtotalElement = document.querySelector('.summary-line:first-child strong');
-    const totalElement = document.querySelector('.summary-line--total strong');
     
     if (subtotalElement) {
         subtotalElement.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
