@@ -148,13 +148,25 @@
     </main>
 <script src="script.js"></script>
 <script>
-    // Fallback: se o script não carregou, tenta carregar de novo
-    if (typeof initCarrinho === 'undefined') {
-        console.log('Carregando script.js novamente...');
-        var script = document.createElement('script');
-        script.src = 'script.js';
-        document.head.appendChild(script);
-    }
+    // Garantir que o script.js carregou
+    document.addEventListener('DOMContentLoaded', function() {
+        // Verificar se a função existe
+        if (typeof initCarrinho === 'function') {
+            console.log('✅ initCarrinho encontrada, executando...');
+            initCarrinho();
+        } else {
+            console.log('⏳ Aguardando script.js carregar...');
+            // Tentar novamente após 500ms
+            setTimeout(function() {
+                if (typeof initCarrinho === 'function') {
+                    console.log('✅ initCarrinho carregou!');
+                    initCarrinho();
+                } else {
+                    console.log('❌ initCarrinho não encontrada!');
+                }
+            }, 500);
+        }
+    });
 </script>
   </body>
 </html>
