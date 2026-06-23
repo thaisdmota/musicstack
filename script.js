@@ -33,15 +33,15 @@ function initPaginaInicial() {
     if (cartButton) {
         cartButton.addEventListener('click', function(e) {
             e.preventDefault();
-            navigateTo('carrinho.html');  // ← MUDOU
+            navigateTo('carrinho.html');
         });
     }
     
-    const bottomCart = document.querySelector('.bottom-nav__item[href="../index.html"]');
+    const bottomCart = document.querySelector('.bottom-nav__item[href="carrinho.html"]');
     if (bottomCart) {
         bottomCart.addEventListener('click', function(e) {
             e.preventDefault();
-            navigateTo('carrinho.html');  // ← MUDOU
+            navigateTo('carrinho.html');
         });
     }
 }
@@ -52,7 +52,7 @@ function initPaginaInicial() {
 function initDetalhesDisco() {
     console.log('💿 Inicializando Detalhes do Disco...');
     
-    const goToHome = () => navigateTo('index.html');  // ← MUDOU (era paginainicial.html)
+    const goToHome = () => navigateTo('index.html');
     
     const backSelectors = [
         '.back-button',
@@ -70,14 +70,11 @@ function initDetalhesDisco() {
     if (cartLink) {
         cartLink.addEventListener('click', function(e) {
             e.preventDefault();
-            navigateTo('carrinho.html');  // ← MUDOU (era index.html)
+            navigateTo('carrinho.html');
         });
     }
 }
 
-// ============================================
-// 3. CARRINHO (carrinho.html)
-// ============================================
 // ============================================
 // 3. CARRINHO (carrinho.html) - CORRIGIDO
 // ============================================
@@ -93,15 +90,15 @@ function initCarrinho() {
         });
     }
     
-    // VOLTAR → detalhesdisco.html
+    // VOLTAR → INDEX.HTML (página inicial)
     const backButton = document.querySelector('.icon-button');
     if (backButton) {
         backButton.addEventListener('click', function() {
-            navigateTo('detalhesdisco.html');
+            navigateTo('index.html');
         });
     }
 
-    // INICIALIZAR data-base para cada item ANTES de adicionar eventos
+    // INICIALIZAR data-base para cada item
     document.querySelectorAll('.item-actions').forEach((itemActions) => {
         const priceElement = itemActions.querySelector('strong');
         const qtyElement = itemActions.querySelector('.qty-number');
@@ -112,40 +109,63 @@ function initCarrinho() {
         console.log(`📦 Item: preço base = R$ ${basePrice.toFixed(2)}`);
     });
 
-    // Botões de quantidade (- e +) - USANDO UMA ÚNICA VEZ
+    // Botões de quantidade
     const qtyButtons = document.querySelectorAll('.qty-button');
     console.log('🔍 Botões de quantidade encontrados:', qtyButtons.length);
     
     qtyButtons.forEach((btn) => {
-        // Remove event listeners anteriores para evitar duplicação
         btn.removeEventListener('click', handleQuantityClick);
         btn.addEventListener('click', handleQuantityClick);
     });
     
+    // Botão de aplicar cupom
+    const couponBtn = document.querySelector('.coupon-row button');
+    if (couponBtn) {
+        couponBtn.addEventListener('click', function() {
+            const input = document.querySelector('#coupon');
+            const couponCode = input.value.trim().toUpperCase();
+            
+            if (couponCode === 'VIPGOLD') {
+                const discountRow = document.querySelector('.summary-line--discount');
+                const discountElement = discountRow ? discountRow.querySelector('strong') : null;
+                
+                if (discountElement) {
+                    const subtotalElement = document.querySelector('.summary-line:first-child strong');
+                    if (subtotalElement) {
+                        const subtotal = parseFloat(subtotalElement.textContent.replace('R$ ', '').replace(',', '.'));
+                        const discountAmount = subtotal * 0.10;
+                        discountElement.textContent = `- R$ ${discountAmount.toFixed(2).replace('.', ',')}`;
+                        alert('✅ Cupom VIPGOLD aplicado com sucesso! Desconto de 10%');
+                        updateSubtotal();
+                    }
+                }
+            } else if (couponCode) {
+                alert('❌ Cupom inválido. Tente VIPGOLD');
+            } else {
+                alert('⚠️ Por favor, insira um código de cupom');
+            }
+        });
+    }
+    
     console.log('✅ Carrinho inicializado com sucesso!');
 }
 
-// Função separada para manipular clique nos botões de quantidade
+// Função para manipular clique nos botões de quantidade
 function handleQuantityClick() {
     console.log('🔄 Clique no botão de quantidade');
     const itemActions = this.closest('.item-actions');
     const qtyElement = itemActions.querySelector('.qty-number');
     const priceElement = itemActions.querySelector('strong');
     
-    // Pegar a quantidade atual
     let qty = parseInt(qtyElement.textContent);
-    
-    // Pegar o preço BASE
     let basePrice = parseFloat(priceElement.getAttribute('data-base'));
     
-    // Se não tiver data-base, calcular
     if (!basePrice || isNaN(basePrice)) {
         const currentPrice = parseFloat(priceElement.textContent.replace('R$ ', '').replace(',', '.'));
         basePrice = currentPrice / qty;
         priceElement.setAttribute('data-base', basePrice);
     }
     
-    // Aumentar ou diminuir
     if (this.classList.contains('qty-button--plus')) {
         qty++;
         console.log('➕ Aumentando para:', qty);
@@ -159,16 +179,62 @@ function handleQuantityClick() {
         }
     }
     
-    // Atualizar quantidade
     qtyElement.textContent = qty;
-    
-    // Calcular novo preço
     const newPrice = basePrice * qty;
     priceElement.textContent = `R$ ${newPrice.toFixed(2).replace('.', ',')}`;
     console.log('💰 Novo preço:', priceElement.textContent);
     
-    // Atualizar subtotal
     updateSubtotal();
+}
+
+// ============================================
+// updateSubtotal - CORRIGIDO
+// ============================================
+function updateSubtotal() {
+    const prices = document.querySelectorAll('.item-actions strong');
+    let total = 0;
+    prices.forEach(price => {
+        const value = parseFloat(price.textContent.replace('R$ ', '').replace(',', '.'));
+        if (!isNaN(value)) {
+            total += value;
+        }
+    });
+    
+    const subtotalElement = document.querySelector('.summary-line:first-child strong');
+    const totalElement = document.querySelector('.summary-line--total strong');
+    const itemCount = document.querySelector('.section-heading span');
+    const discountElement = document.querySelector('.summary-line--discount strong');
+    
+    // Atualizar número de itens
+    if (itemCount) {
+        let totalItems = 0;
+        document.querySelectorAll('.qty-number').forEach(el => {
+            totalItems += parseInt(el.textContent);
+        });
+        itemCount.textContent = `${totalItems} ITENS`;
+    }
+    
+    // Atualizar subtotal
+    if (subtotalElement) {
+        subtotalElement.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+    }
+    
+    // Calcular desconto (se existir)
+    let discount = 0;
+    if (discountElement) {
+        const discountText = discountElement.textContent.replace('R$ ', '').replace(',', '.').trim();
+        if (discountText && !isNaN(parseFloat(discountText))) {
+            discount = parseFloat(discountText);
+        }
+    }
+    
+    // Calcular total final
+    if (totalElement) {
+        const shipping = 25.00;
+        let totalFinal = total + shipping + discount;
+        if (totalFinal < 0) totalFinal = 0;
+        totalElement.textContent = `R$ ${totalFinal.toFixed(2).replace('.', ',')}`;
+    }
 }
 
 // ============================================
@@ -187,7 +253,7 @@ function initResumo() {
     const backButton = document.querySelector('.back-button');
     if (backButton) {
         backButton.addEventListener('click', function() {
-            navigateTo('carrinho.html');  // ← MUDOU (era index.html)
+            navigateTo('carrinho.html');
         });
     }
     
@@ -275,7 +341,7 @@ function initConfirmacao() {
     if (ctaLink) {
         ctaLink.addEventListener('click', function(e) {
             e.preventDefault();
-            navigateTo('index.html');  // ← MUDOU (era paginainicial.html)
+            navigateTo('index.html');
         });
     }
     
