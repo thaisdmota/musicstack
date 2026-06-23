@@ -147,26 +147,5 @@
       </section>
     </main>
 <script src="script.js"></script>
-<script>
-    // Garantir que o script.js carregou
-    document.addEventListener('DOMContentLoaded', function() {
-        // Verificar se a função existe
-        if (typeof initCarrinho === 'function') {
-            console.log('✅ initCarrinho encontrada, executando...');
-            initCarrinho();
-        } else {
-            console.log('⏳ Aguardando script.js carregar...');
-            // Tentar novamente após 500ms
-            setTimeout(function() {
-                if (typeof initCarrinho === 'function') {
-                    console.log('✅ initCarrinho carregou!');
-                    initCarrinho();
-                } else {
-                    console.log('❌ initCarrinho não encontrada!');
-                }
-            }, 500);
-        }
-    });
-</script>
   </body>
 </html>
