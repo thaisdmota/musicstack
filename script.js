@@ -78,9 +78,13 @@ function initDetalhesDisco() {
 // ============================================
 // 3. CARRINHO (carrinho.html)
 // ============================================
+// ============================================
+// 3. CARRINHO (carrinho.html) - CORRIGIDO
+// ============================================
 function initCarrinho() {
     console.log('🛒 Inicializando Carrinho...');
     
+    // IR PARA CHECKOUT → resumo.html
     const checkoutBtn = document.querySelector('.checkout-button');
     if (checkoutBtn) {
         checkoutBtn.addEventListener('click', function(e) {
@@ -89,44 +93,15 @@ function initCarrinho() {
         });
     }
     
+    // VOLTAR → detalhesdisco.html
     const backButton = document.querySelector('.icon-button');
     if (backButton) {
         backButton.addEventListener('click', function() {
-            navigateTo('detalhesdisco.html');  // ← continua igual
+            navigateTo('detalhesdisco.html');
         });
     }
-    
-    // Botões de quantidade
-    document.querySelectorAll('.qty-button').forEach((btn) => {
-        btn.addEventListener('click', function() {
-            const itemActions = this.closest('.item-actions');
-            const qtyElement = itemActions.querySelector('.qty-number');
-            const priceElement = itemActions.querySelector('strong');
-            
-            let qty = parseInt(qtyElement.textContent);
-            let basePrice = parseFloat(priceElement.getAttribute('data-base'));
-            
-            if (!basePrice || isNaN(basePrice)) {
-                const currentPrice = parseFloat(priceElement.textContent.replace('R$ ', '').replace(',', '.'));
-                basePrice = currentPrice / qty;
-                priceElement.setAttribute('data-base', basePrice);
-            }
-            
-            if (this.classList.contains('qty-button--plus')) {
-                qty++;
-            } else {
-                if (qty > 1) {
-                    qty--;
-                }
-            }
-            
-            qtyElement.textContent = qty;
-            const newPrice = basePrice * qty;
-            priceElement.textContent = `R$ ${newPrice.toFixed(2).replace('.', ',')}`;
-            updateSubtotal();
-        });
-    });
-    
+
+    // INICIALIZAR data-base para cada item ANTES de adicionar eventos
     document.querySelectorAll('.item-actions').forEach((itemActions) => {
         const priceElement = itemActions.querySelector('strong');
         const qtyElement = itemActions.querySelector('.qty-number');
@@ -134,40 +109,66 @@ function initCarrinho() {
         const currentPrice = parseFloat(priceElement.textContent.replace('R$ ', '').replace(',', '.'));
         const basePrice = currentPrice / qty;
         priceElement.setAttribute('data-base', basePrice);
+        console.log(`📦 Item: preço base = R$ ${basePrice.toFixed(2)}`);
     });
+
+    // Botões de quantidade (- e +) - USANDO UMA ÚNICA VEZ
+    const qtyButtons = document.querySelectorAll('.qty-button');
+    console.log('🔍 Botões de quantidade encontrados:', qtyButtons.length);
+    
+    qtyButtons.forEach((btn) => {
+        // Remove event listeners anteriores para evitar duplicação
+        btn.removeEventListener('click', handleQuantityClick);
+        btn.addEventListener('click', handleQuantityClick);
+    });
+    
+    console.log('✅ Carrinho inicializado com sucesso!');
 }
 
-function updateSubtotal() {
-    const prices = document.querySelectorAll('.item-actions strong');
-    let total = 0;
-    prices.forEach(price => {
-        const value = parseFloat(price.textContent.replace('R$ ', '').replace(',', '.'));
-        if (!isNaN(value)) {
-            total += value;
+// Função separada para manipular clique nos botões de quantidade
+function handleQuantityClick() {
+    console.log('🔄 Clique no botão de quantidade');
+    const itemActions = this.closest('.item-actions');
+    const qtyElement = itemActions.querySelector('.qty-number');
+    const priceElement = itemActions.querySelector('strong');
+    
+    // Pegar a quantidade atual
+    let qty = parseInt(qtyElement.textContent);
+    
+    // Pegar o preço BASE
+    let basePrice = parseFloat(priceElement.getAttribute('data-base'));
+    
+    // Se não tiver data-base, calcular
+    if (!basePrice || isNaN(basePrice)) {
+        const currentPrice = parseFloat(priceElement.textContent.replace('R$ ', '').replace(',', '.'));
+        basePrice = currentPrice / qty;
+        priceElement.setAttribute('data-base', basePrice);
+    }
+    
+    // Aumentar ou diminuir
+    if (this.classList.contains('qty-button--plus')) {
+        qty++;
+        console.log('➕ Aumentando para:', qty);
+    } else {
+        if (qty > 1) {
+            qty--;
+            console.log('➖ Diminuindo para:', qty);
+        } else {
+            console.log('⚠️ Quantidade mínima é 1');
+            return;
         }
-    });
-    
-    const subtotalElement = document.querySelector('.summary-line:first-child strong');
-    const totalElement = document.querySelector('.summary-line--total strong');
-    const itemCount = document.querySelector('.section-heading span');
-    
-    if (itemCount) {
-        let totalItems = 0;
-        document.querySelectorAll('.qty-number').forEach(el => {
-            totalItems += parseInt(el.textContent);
-        });
-        itemCount.textContent = `${totalItems} ITENS`;
     }
     
-    if (subtotalElement) {
-        subtotalElement.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
-    }
+    // Atualizar quantidade
+    qtyElement.textContent = qty;
     
-    if (totalElement) {
-        const shipping = 25.00;
-        const totalWithShipping = total + shipping;
-        totalElement.textContent = `R$ ${totalWithShipping.toFixed(2).replace('.', ',')}`;
-    }
+    // Calcular novo preço
+    const newPrice = basePrice * qty;
+    priceElement.textContent = `R$ ${newPrice.toFixed(2).replace('.', ',')}`;
+    console.log('💰 Novo preço:', priceElement.textContent);
+    
+    // Atualizar subtotal
+    updateSubtotal();
 }
 
 // ============================================
